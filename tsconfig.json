@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "useUnknownInCatchVariables": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["es2020"],
+    "allowJs": true,
+    "jsx": "react-native",
+
+    "noEmit": true,
+
+    "isolatedModules": true,
+
+    "strict": true,
+
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    "skipLibCheck": false,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@constants": ["./src/constants"],
+      "@screen": ["./src/screen"],
+      "@assets": ["./src/assets"],
+      "@language": ["./src/language"],
+      "@navigation": ["./src/navigation"],
+      "@theme": ["./src/theme"],
+      "@redux": ["./src/redux"],
+      "@common": ["./src/common"],
+      "@component": ["./src/component"],
+      
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}

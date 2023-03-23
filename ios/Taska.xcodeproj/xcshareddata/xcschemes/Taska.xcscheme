@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "BaseRN.app"
-               BlueprintName = "BaseRN"
-               ReferencedContainer = "container:BaseRN.xcodeproj">
+               BuildableName = "Taska.app"
+               BlueprintName = "Taska"
+               ReferencedContainer = "container:Taska.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "BaseRNTests.xctest"
-               BlueprintName = "BaseRNTests"
-               ReferencedContainer = "container:BaseRN.xcodeproj">
+               BuildableName = "TaskaTests.xctest"
+               BlueprintName = "TaskaTests"
+               ReferencedContainer = "container:Taska.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "BaseRN.app"
-            BlueprintName = "BaseRN"
-            ReferencedContainer = "container:BaseRN.xcodeproj">
+            BuildableName = "Taska.app"
+            BlueprintName = "Taska"
+            ReferencedContainer = "container:Taska.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "BaseRN.app"
-            BlueprintName = "BaseRN"
-            ReferencedContainer = "container:BaseRN.xcodeproj">
+            BuildableName = "Taska.app"
+            BlueprintName = "Taska"
+            ReferencedContainer = "container:Taska.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

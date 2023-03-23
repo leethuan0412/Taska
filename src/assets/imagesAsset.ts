@@ -15,6 +15,10 @@ const images = {
   ic_email: require('./images/ic_email.png'),
   ic_lock: require('./images/ic_lock.png'),
   ic_check: require('./images/ic_check.png'),
+  img_lock: require('./images/img_lock.png'),
+  img_protect: require('./images/img_protect.png'),
+
+
 
 
 };

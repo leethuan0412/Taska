@@ -15,7 +15,7 @@ const LoginEmailScreen =()=>{
     const [check, setCheck]=useState(false)
 
     return (
-      <Block flex={1} color={colors.white} >
+      <Block flex={1} color={colors.white}>
         <AppHeader goBack />
         <Block paddingHorizontal={Spacing.width20}>
           <Text style={styles.title}>Login to your Account</Text>
@@ -47,8 +47,12 @@ const LoginEmailScreen =()=>{
               ]}
               labelStyle={styles.txtlogin}
             />
-
-        <Text style={styles.txtForgot}>Forgot the password?</Text>
+            <TouchableOpacity
+              onPress={() =>
+                NavigationUtils.navigate(ROUTE_AUTH.FORGOTPASSWORD)
+              }>
+              <Text style={styles.txtForgot}>Forgot the password?</Text>
+            </TouchableOpacity>
 
             <View style={styles.viewLogin}>
               <View style={styles.line} />
@@ -59,8 +63,7 @@ const LoginEmailScreen =()=>{
               direction="row"
               alignItems="center"
               justifyContent="space-around"
-              marginTop={Spacing.height40}
-              >
+              marginTop={Spacing.height40}>
               <TouchableOpacity style={styles.btnFb}>
                 <AppImage
                   source={R.images.ic_fb}

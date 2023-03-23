@@ -12,8 +12,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const RegisterScreen =()=>{
 
-    const [check, setCheck]=useState(false)
-
+    const [check, setCheck]=useState(false)    
     return (
       <Block flex={1} color={colors.white} >
         <AppHeader goBack />

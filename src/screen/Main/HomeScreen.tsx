@@ -4,33 +4,13 @@ import {AppButton, AppHeader, Block} from '@src/component';
 import AppInput from '@src/component/AppInput';
 import { api } from '@src/service/Network/ApiService';
 import {colors} from '@src/theme';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text} from 'react-native';
+import axios from 'axios';
 const HomeScreen = () => {
-  const [email, setEmail] = useState('leducthuan0412@gmail.com');
-  const [password, setPassword] = useState('12345678');
-// https://nodejsdemo.onrender.com/api/auth/login
-  const handleLogin = async()=>{
-    try {      
-      
-      const payload={
-        email: email,
-        password: password
-      }
-      console.log(payload,'payload');
-    const res = await ApiLogin.login(payload)
-    console.log(res,'res');
-    
-    } catch (error) {
-      console.log(error,'r');
-      
-    }
-  }
-
-
   return (
     <Block>
-      <AppHeader title="HOIME" goBack />
+      {/* <AppHeader title="HOIME" goBack />
       <Text style={styles.text}>{R.strings().hello}</Text>
       <AppInput
         value={email}
@@ -43,7 +23,7 @@ const HomeScreen = () => {
         placeholder="enter your password"
         secureTextEntry
       />
-      <AppButton label='Login' onPress={handleLogin}/>
+      <AppButton label='Login' onPress={handleLogin}/> */}
     </Block>
   );
 };

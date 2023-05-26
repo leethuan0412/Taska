@@ -4,8 +4,12 @@ import {AuthStackComponent} from '../stack/AuthStack';
 import {MainStackComponent} from '../stack/MainStack';
 import SplashScreen from 'react-native-splash-screen'
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import accountSlice, { authSelector, setAccountToken } from '@src/redux/slices/accountSlice';
 const NavigationApp = React.forwardRef((props, ref: any) => {
-  const token = true;
+  const accountSlice = useSelector(authSelector)
+  console.log(accountSlice,'aloooo');
+  const token =true
 
   useEffect(()=>{
     SplashScreen.hide();

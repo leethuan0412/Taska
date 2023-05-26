@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "748815530022",
+    "project_id": "taska-23ad4",
+    "storage_bucket": "taska-23ad4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748815530022:android:0a7e2b5ce09a2ed2480ee7",
+        "android_client_info": {
+          "package_name": "com.basern"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748815530022-d6jhuguikmt807eeg3fin5ltfac3d57m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDueLAoSBNfBegrF_9Q1FXjX01jkzF_rHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748815530022-d6jhuguikmt807eeg3fin5ltfac3d57m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

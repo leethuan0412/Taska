@@ -141,8 +141,7 @@ const styles = StyleSheet.create({
   error_message: {
     fontSize: FontSize.Font12,
     textAlign: 'right',
-    color: '#FFB7B7',
-    marginTop: '2%',
+    color: 'red',
   },
 });
 

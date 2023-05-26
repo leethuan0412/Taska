@@ -1,7 +1,6 @@
-import { api } from "@src/service/Network/ApiService";
-import { LoginPayload } from "@src/service/Network/model/ApiPayload";
+import api from '@src/service/Network/ApiService';
+import {LoginPayload} from '@src/service/Network/model/ApiPayload';
 
 export default {
-    login: (payload: LoginPayload) =>
-      api.postNormal(`api/v1/account/login`, payload),
-  }
+  login: (payload: LoginPayload) => api.post(`auth/login`, payload),
+};

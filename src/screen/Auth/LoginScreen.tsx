@@ -1,16 +1,15 @@
-import { R } from '@src/assets/R';
-import { AppButton, AppHeader, Block } from '@src/component';
-import { AppImage } from '@src/component/AppImage/FstImage';
-import { Spacing } from '@src/component/appSpacing';
-import { FontSize } from '@src/component/fontSize';
-import { NavigationUtils } from '@src/navigation/NavigationUtils';
-import { ROUTE_AUTH } from '@src/navigation/RouteAuth';
-import { colors } from '@src/theme';
+import {R} from '@src/assets/R';
+import {AppButton, AppHeader, Block} from '@src/component';
+import {Spacing} from '@src/component/appSpacing';
+import {FontSize} from '@src/component/fontSize';
+import {NavigationUtils} from '@src/navigation/NavigationUtils';
+import {ROUTE_AUTH} from '@src/navigation/RouteAuth';
+import {colors} from '@src/theme';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const LoginScreen = () => {
   return (
-    <Block flex={1} color={colors.white} >
+    <Block flex={1} color={colors.white}>
       <AppHeader goBack />
       <Text style={styles.title}>Let’s you in</Text>
       <Block marginTop={Spacing.height80}>
@@ -42,7 +41,7 @@ const LoginScreen = () => {
         label="Sign in with password"
         style={styles.loginPassword}
         labelStyle={styles.txtlogin}
-        onPress={()=> NavigationUtils.navigate(ROUTE_AUTH.LOGIN_EMAIL)}
+        onPress={() => NavigationUtils.navigate(ROUTE_AUTH.LOGIN_EMAIL)}
       />
       <Block
         flex={1}
@@ -51,43 +50,43 @@ const LoginScreen = () => {
         justifyContent="center"
         marginTop={Spacing.height40}>
         <Text style={styles.txtAcc}>Don’t have an account?</Text>
-        <TouchableOpacity onPress={()=> NavigationUtils.navigate(ROUTE_AUTH.REGISTER)}>
-        <Text style={styles.txtSignup}>Sign up</Text>
+        <TouchableOpacity
+          onPress={() => NavigationUtils.navigate(ROUTE_AUTH.REGISTER)}>
+          <Text style={styles.txtSignup}>Sign up</Text>
         </TouchableOpacity>
       </Block>
     </Block>
   );
 };
 const styles = StyleSheet.create({
-  txtAcc:{
+  txtAcc: {
     color: '#9E9E9E',
     fontSize: FontSize.Font14,
   },
-  txtSignup:{
+  txtSignup: {
     color: '#246BFD',
-     fontWeight:'600',
-     fontSize: FontSize.Font14,
-     marginLeft: Spacing.width5
+    fontWeight: '600',
+    fontSize: FontSize.Font14,
+    marginLeft: Spacing.width5,
   },
-  txtlogin:{
+  txtlogin: {
     color: colors.white,
     paddingVertical: Spacing.height16,
     fontSize: FontSize.Font16,
     fontWeight: 'bold',
-   
   },
-  loginPassword:{
-    backgroundColor:'#246BFD',
+  loginPassword: {
+    backgroundColor: '#246BFD',
     width: '90%',
-    justifyContent:'center',
+    justifyContent: 'center',
     borderRadius: Spacing.height24,
     marginTop: Spacing.height50,
     shadowColor: '#246BFD',
     shadowOpacity: 0.1,
-    shadowOffset:{
-      height:15,
-      width:0,
-    }
+    shadowOffset: {
+      height: 15,
+      width: 0,
+    },
   },
   line: {
     height: 1,
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
   or: {
     fontSize: FontSize.Font20,
     paddingHorizontal: Spacing.width10,
-    color: '#616161'
+    color: '#616161',
   },
   btn: {
     borderWidth: 1,

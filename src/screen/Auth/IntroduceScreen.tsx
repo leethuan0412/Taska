@@ -14,7 +14,7 @@ const {width} = Dimensions.get('screen')
 const IntroduceScreen = () => {
 
   const scrollX = useRef(new Animated.Value(0)).current
-  const sliceRef = useRef(null)
+  const sliceRef : any= useRef(null)
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const renderItemIntro=({item}: any)=>{
@@ -79,7 +79,6 @@ const IntroduceScreen = () => {
     
   }
   const handleOnViewableItemsChanged = useRef(({viewableItems}:any) => {
-    console.log('viewableItems', viewableItems);
     setCurrentIndex(viewableItems[0].index);
   }).current;
 

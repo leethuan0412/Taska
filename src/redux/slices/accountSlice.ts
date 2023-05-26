@@ -4,10 +4,14 @@ import {APP_SLICE} from '../../types/index';
 export interface accountInterface {
   token: string;
   userProfile: any;
+  email: string
+  name: string
 }
 
 const initialState = {
   token: '',
+  email:'',
+  name:'',
   userProfile: {},
 } as accountInterface;
 
@@ -19,10 +23,12 @@ const accountSlice = createSlice({
       state.token = action.payload;
     },
     setUserProfile(state, action) {
-      state.userProfile = action.payload;
+      state.email = action.payload.email
+      state.name = action.payload.name
     },
   },
 });
 
 export const {setAccountToken, setUserProfile} = accountSlice.actions;
+export const authSelector = (state: { auth: any; }) => state.auth;
 export default accountSlice.reducer;

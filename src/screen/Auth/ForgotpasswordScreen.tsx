@@ -13,7 +13,7 @@ import { StyleSheet, Text } from "react-native";
     const [phone, setPhone] =useState('')
 
     return (
-      <Block marginTop={Spacing.height20}>
+      <Block >
         <AppHeader goBack title="Forgot Password" styleTitle={styles.title} />
         <Block paddingHorizontal={Spacing.width20}>
           <AppImage

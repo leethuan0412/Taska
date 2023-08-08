@@ -1,3 +1,5 @@
+import {LoadingProgress} from '@src/component/Loading';
+import {progressHolder} from '@src/component/Loading/LoadingProgressRef';
 import React from 'react';
 import {Platform, StyleSheet} from 'react-native';
 import FlashMessage from 'react-native-flash-message';
@@ -24,6 +26,7 @@ const App = () => {
           hideStatusBar={false}
         />
       </PersistGate>
+      <LoadingProgress ref={progressHolder} />
     </Provider>
   );
 };

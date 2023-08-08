@@ -1,12 +1,18 @@
-import ApiLogin from '@src/api/ApiLogin';
 import {R} from '@src/assets/R';
 import {AppButton, AppHeader, Block} from '@src/component';
 import {AppImage} from '@src/component/AppImage/FstImage';
 import RNTextInput from '@src/component/AppInput';
 import {Spacing} from '@src/component/appSpacing';
+import DismissKeyboard from '@src/component/DismissKeyboard';
 import {FontSize} from '@src/component/fontSize';
+import {
+  hideLoading,
+  showLoading,
+} from '@src/component/Loading/LoadingProgressRef';
 import {NavigationUtils} from '@src/navigation/NavigationUtils';
 import {ROUTE_AUTH} from '@src/navigation/RouteAuth';
+import {setUserProfile} from '@src/redux/slices/accountSlice';
+import Api from '@src/service/Network/ApiService';
 import {colors} from '@src/theme';
 import {Formik} from 'formik';
 import React, {useState} from 'react';
@@ -16,62 +22,69 @@ import * as Yup from 'yup';
 
 const LoginEmailScreen = () => {
   const [check, setCheck] = useState(false);
-  const [loading, setLoading] = React.useState(false);
   const dispatch = useDispatch();
 
   const RegisterSchema = Yup.object().shape({
     email: Yup.string().trim().email().required('Email invalid'),
-    password: Yup.string().trim().min(6).required('more than 4 characters'),
+    password: Yup.string().trim().min(4).required('more than 4 characters'),
   });
 
   const handleSubmit = async (values: {email: string; password: string}) => {
-    const payload = {
-      email: 'test@gmail.com',
-      password: '123456',
-    };
-
     try {
-      const res = await ApiLogin.login(payload);
+      const payload = {
+        email: values.email,
+        password: values.password,
+      };
+      showLoading();
+      const res = await Api.login(payload);
+      console.log(res?.data?.accessToken, 'res?.data?.accessToken');
+
+      if (res?.ok) {
+        dispatch(setUserProfile({name: res?.data?.accessToken}));
+      }
+      hideLoading();
       console.log(res, 'res');
     } catch (error) {
       console.log(error, 'errr');
     }
   };
+
   return (
     <Block flex={1} color={colors.white}>
       <AppHeader goBack />
-      <Block paddingHorizontal={Spacing.width20}>
-        <Text style={styles.title}>Login to your Account</Text>
-        <Block marginTop={Spacing.height40}>
-          <Formik
-            initialValues={{
-              email: 'test@gmail.com',
-              password: '123456',
-            }}
-            onSubmit={handleSubmit}
-            validationSchema={RegisterSchema}>
-            {({handleChange, handleSubmit, values, errors, touched}) => (
-              <>
-                <RNTextInput
-                  value={values.email}
-                  onChangeText={handleChange('email')}
-                  leftIcon={R.images.ic_email}
-                  placeholder="email"
-                  inputContainerStyle={styles.input}
-                  errorMessage={errors.email}
-                  touched={touched.email}
-                />
-                <RNTextInput
-                  value={values.password}
-                  onChangeText={handleChange('password')}
-                  leftIcon={R.images.ic_lock}
-                  placeholder="Password"
-                  inputContainerStyle={styles.input}
-                  secureTextEntry
-                  errorMessage={errors.password}
-                  touched={touched.password}
-                />
-                {/* <Block
+      <DismissKeyboard>
+        <Block paddingHorizontal={Spacing.width20}>
+          <Text style={styles.title}>Login to your Account</Text>
+          <Block marginTop={Spacing.height40}>
+            <Formik
+              initialValues={{
+                email: 'abc@gmail.com',
+                password: '1111',
+              }}
+              onSubmit={handleSubmit}
+              validationSchema={RegisterSchema}>
+              {({handleChange, handleSubmit, values, errors, touched}) => (
+                <>
+                  <RNTextInput
+                    value={values.email}
+                    onChangeText={handleChange('email')}
+                    leftIcon={R.images.ic_email}
+                    placeholder="email"
+                    inputContainerStyle={styles.input}
+                    errorMessage={errors.email}
+                    touched={touched.email}
+                  />
+                  <RNTextInput
+                    value={values.password}
+                    onChangeText={handleChange('password')}
+                    leftIcon={R.images.ic_lock}
+                    placeholder="Password"
+                    inputContainerStyle={styles.input}
+                    secureTextEntry
+                    errorMessage={errors.password}
+                    touched={touched.password}
+                  />
+                  {/* <Block
                   direction="row"
                   alignItems="center"
                   justifyContent="center"
@@ -79,69 +92,72 @@ const LoginEmailScreen = () => {
                   <CheckBox isCheck={check} onPress={() => setCheck(!check)} />
                   <Text style={styles.remember}>Remember me</Text>
                 </Block> */}
-                <AppButton
-                  label="Sign up"
-                  style={[
-                    styles.loginPassword,
-                    {backgroundColor: check ? '#246BFD' : '#476EBE'},
-                  ]}
-                  labelStyle={styles.txtlogin}
-                  onPress={handleSubmit}
-                />
-              </>
-            )}
-          </Formik>
-          <TouchableOpacity
-            onPress={() => NavigationUtils.navigate(ROUTE_AUTH.FORGOTPASSWORD)}>
-            <Text style={styles.txtForgot}>Forgot the password?</Text>
-          </TouchableOpacity>
-
-          <View style={styles.viewLogin}>
-            <View style={styles.line} />
-            <Text style={styles.or}>or continue with</Text>
-            <View style={styles.line} />
-          </View>
-          <Block
-            direction="row"
-            alignItems="center"
-            justifyContent="space-around"
-            marginTop={Spacing.height40}>
-            <TouchableOpacity style={styles.btnFb}>
-              <AppImage
-                source={R.images.ic_fb}
-                style={styles.iconFb}
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btnFb}>
-              <AppImage
-                source={R.images.ic_gg}
-                style={styles.iconFb}
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btnFb}>
-              <AppImage
-                source={R.images.ic_apple}
-                style={styles.iconFb}
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
-          </Block>
-
-          <Block
-            direction="row"
-            alignItems="center"
-            justifyContent="center"
-            marginTop={Spacing.height50}>
-            <Text style={styles.txtAcc}>Already have an account?</Text>
+                  <AppButton
+                    label="Sign up"
+                    style={[
+                      styles.loginPassword,
+                      {backgroundColor: check ? '#246BFD' : '#476EBE'},
+                    ]}
+                    labelStyle={styles.txtlogin}
+                    onPress={handleSubmit}
+                  />
+                </>
+              )}
+            </Formik>
             <TouchableOpacity
-              onPress={() => NavigationUtils.navigate(ROUTE_AUTH.REGISTER)}>
-              <Text style={styles.txtSignup}>Sign up</Text>
+              onPress={() =>
+                NavigationUtils.navigate(ROUTE_AUTH.FORGOTPASSWORD)
+              }>
+              <Text style={styles.txtForgot}>Forgot the password?</Text>
             </TouchableOpacity>
+
+            <View style={styles.viewLogin}>
+              <View style={styles.line} />
+              <Text style={styles.or}>or continue with</Text>
+              <View style={styles.line} />
+            </View>
+            <Block
+              direction="row"
+              alignItems="center"
+              justifyContent="space-around"
+              marginTop={Spacing.height40}>
+              <TouchableOpacity style={styles.btnFb}>
+                <AppImage
+                  source={R.images.ic_fb}
+                  style={styles.iconFb}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btnFb}>
+                <AppImage
+                  source={R.images.ic_gg}
+                  style={styles.iconFb}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btnFb}>
+                <AppImage
+                  source={R.images.ic_apple}
+                  style={styles.iconFb}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+            </Block>
+
+            <Block
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              marginTop={Spacing.height50}>
+              <Text style={styles.txtAcc}>Already have an account?</Text>
+              <TouchableOpacity
+                onPress={() => NavigationUtils.navigate(ROUTE_AUTH.REGISTER)}>
+                <Text style={styles.txtSignup}>Sign up</Text>
+              </TouchableOpacity>
+            </Block>
           </Block>
         </Block>
-      </Block>
+      </DismissKeyboard>
     </Block>
   );
 };

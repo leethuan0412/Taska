@@ -24,7 +24,7 @@ export function navigate(routeName: string, params?: object | undefined) {
     }),
   );
 }
-export const navigationRef = createRef();
+export const navigationRef = createRef<any>();
 
 export const getCurrentRouteName = () =>
   navigationRef?.current?.getCurrentRoute().name;

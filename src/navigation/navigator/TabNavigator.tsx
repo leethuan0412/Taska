@@ -1,6 +1,7 @@
 import {R} from '@src/assets/R';
 import {MAIN_TAB} from '@src/constants';
 import {HomeScreen} from '@src/screen/Main/HomeScreen';
+import {ProfileScreen} from '@src/screen/Main/user/ProfileScreen';
 import {colors} from '@src/theme';
 import React, {useRef, useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -10,7 +11,7 @@ import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
 import FastImage from 'react-native-fast-image';
 import {isIphoneX} from 'react-native-iphone-x-helper';
 
-const {HOME, NOTIFICATION, ACCOUNT, QR, E_VOUCHER} = MAIN_TAB;
+const {HOME, NOTIFICATION, ACCOUNT, ADD_TASK, PROJECT} = MAIN_TAB;
 
 const TabNavigator = () => {
   const {t} = useTranslation();
@@ -21,19 +22,19 @@ const TabNavigator = () => {
       name: HOME,
       icon: R.images.ic_home,
       route: HomeScreen,
-      title: t('home'),
+      title: t('Home'),
     },
-    [E_VOUCHER]: {
-      name: E_VOUCHER,
+    [PROJECT]: {
+      name: PROJECT,
       icon: R.images.ic_home,
       route: HomeScreen,
-      title: t('gift'),
+      title: t('Project'),
     },
-    [QR]: {
-      name: QR,
+    [ADD_TASK]: {
+      name: ADD_TASK,
       icon: R.images.ic_home,
       route: HomeScreen,
-      title: 'QR Code',
+      title: '',
     },
     [NOTIFICATION]: {
       name: NOTIFICATION,
@@ -44,8 +45,8 @@ const TabNavigator = () => {
     [ACCOUNT]: {
       name: ACCOUNT,
       icon: R.images.ic_home,
-      route: HomeScreen,
-      title: t('account'),
+      route: ProfileScreen,
+      title: t('Account'),
     },
   };
   const onClickButton = async () => {
@@ -90,13 +91,7 @@ const TabNavigator = () => {
         renderCircle={() => (
           <TouchableOpacity
             style={[type === 'DOWN' ? styles.btnCircle : styles.btnCircleUp]}
-            onPress={() => onClickButton()}>
-            <FastImage
-              style={styles.image}
-              resizeMode="contain"
-              source={R.images.ic_qr}
-            />
-          </TouchableOpacity>
+            onPress={() => onClickButton()}></TouchableOpacity>
         )}
         tabBar={({routeName, selectedTab, navigate}) => {
           return (

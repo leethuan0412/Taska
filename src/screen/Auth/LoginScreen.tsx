@@ -1,3 +1,7 @@
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 import {R} from '@src/assets/R';
 import {AppButton, AppHeader, Block} from '@src/component';
 import {Spacing} from '@src/component/appSpacing';
@@ -6,8 +10,27 @@ import {NavigationUtils} from '@src/navigation/NavigationUtils';
 import {ROUTE_AUTH} from '@src/navigation/RouteAuth';
 import {colors} from '@src/theme';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-
+//437633204254-tc4kg3hbbijn1kaaodh7gqb2fivkisis.apps.googleusercontent.com
 const LoginScreen = () => {
+  const onLoginGoogle = async () => {
+    // GoogleSignin.configure({
+    //   scopes: ['email'],
+    //   webClientId:
+    //     '437633204254-tc4kg3hbbijn1kaaodh7gqb2fivkisis.apps.googleusercontent.com',
+    //   offlineAccess: true,
+    // });
+    // try {
+    //   await GoogleSignin.hasPlayServices();
+    //   const userInfo = await GoogleSignin.signIn();
+    //   console.log(userInfo);
+    //   // const {email, id} = userInfo.user;
+    //   // await login(email, id, 'G');
+    // } catch (error) {
+    //   console.log(error, 'err');
+    //   return false;
+    // }
+  };
+
   return (
     <Block flex={1} color={colors.white}>
       <AppHeader goBack />
@@ -24,6 +47,7 @@ const LoginScreen = () => {
           label="Continue with Google"
           labelStyle={styles.label}
           style={styles.btn}
+          onPress={onLoginGoogle}
         />
         <AppButton
           sourceIcon={R.images.ic_apple}

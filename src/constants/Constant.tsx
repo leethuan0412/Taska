@@ -6,8 +6,8 @@ export const SCREEN_ROUTE = {
 };
 export const MAIN_TAB = {
   HOME: 'HOME',
-  E_VOUCHER: 'E_VOUCHER',
-  QR: 'QR',
+  PROJECT: 'PROJECT',
+  ADD_TASK: 'ADD_TASK',
   NOTIFICATION: 'NOTIFICATION',
   ACCOUNT: 'ACCOUNT',
 };

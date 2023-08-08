@@ -17,9 +17,6 @@ const images = {
   ic_check: require('./images/ic_check.png'),
   img_lock: require('./images/img_lock.png'),
   img_protect: require('./images/img_protect.png'),
-
-
-
-
+  ic_user: require('./images/ic_user.png'),
 };
 export default images;

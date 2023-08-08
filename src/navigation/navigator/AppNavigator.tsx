@@ -1,22 +1,18 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React from 'react';
+import React, {useEffect} from 'react';
+import SplashScreen from 'react-native-splash-screen';
+import {useSelector} from 'react-redux';
 import {AuthStackComponent} from '../stack/AuthStack';
 import {MainStackComponent} from '../stack/MainStack';
-import SplashScreen from 'react-native-splash-screen'
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import accountSlice, { authSelector, setAccountToken } from '@src/redux/slices/accountSlice';
 const NavigationApp = React.forwardRef((props, ref: any) => {
-  const accountSlice = useSelector(authSelector)
-  console.log(accountSlice,'aloooo');
-  const token =true
+  const accountSlice = useSelector((state: any) => state?.accountSlice?.token);
 
-  useEffect(()=>{
+  useEffect(() => {
     SplashScreen.hide();
-  },[])
+  }, []);
 
   const renderStackApp = () => {
-    if (token) {
+    if (!accountSlice) {
       return <AuthStackComponent />;
     } else {
       return <MainStackComponent />;

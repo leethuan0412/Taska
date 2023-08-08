@@ -1,7 +1,7 @@
 export const colors = {
   label: '#262626',
   line: '#BFBFBF',
-  primary: '#EC4C28',
+  primary: '#246BFD',
   backgroundColor: '#E5E5E5',
   placeHolder: '#647C9C',
   text: '#2E2E2E',
@@ -58,7 +58,7 @@ export const colors = {
   //   lighter: '#637381',
   //   lightest: '#919EAB',
   // },
-}
+};
 
 export const ColorDefault = {
   primary: 'rgb(0, 122, 255)',
@@ -69,7 +69,7 @@ export const ColorDefault = {
   notification: 'rgb(255, 59, 48)',
   error: 'rgb(255, 59, 48)',
   info: '#ffd700',
-}
+};
 export const ColorDark = {
   primary: 'rgb(10, 132, 255)',
   background: 'rgb(1, 1, 1)',
@@ -79,4 +79,4 @@ export const ColorDark = {
   notification: 'rgb(255, 69, 58)',
   error: 'rgb(255, 59, 48)',
   info: '#ffd700',
-}
+};

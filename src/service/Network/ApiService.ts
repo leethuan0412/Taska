@@ -1,68 +1,39 @@
-import {store} from '@src/redux/store';
-import {colors} from '@src/theme';
-import axios from 'axios';
-import {showMessage} from 'react-native-flash-message';
-import {describeErrorResponse, describeSuccessResponse} from './logger';
+import apisauce from 'apisauce';
+import Config from 'react-native-config';
+import {RegisterPayload} from './model/ApiPayload';
+import {Login} from './model/ApiResponse';
 
-const api = axios.create();
+function create() {
+  const api = apisauce.create({
+    baseURL: Config.BASE_URL,
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    timeout: 50000,
+  });
 
-export const BASEURL = 'https://noteapi-3va1.onrender.com';
-
-api.interceptors.request.use(
-  async (config: any) => {
-    config.baseURL = BASEURL;
-    const state = store.getState();
-    // @ts-ignore
-    const token = state?.accountSlice?.token;
-    if (token) {
-      config.headers = {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-        ...config.headers,
-      };
-    }
-    if (config?.method?.toUpperCase() === 'GET') {
-      config.params = {...config.params};
-    }
-    config.headers = {
-      ...config.headers,
-    };
-    return config;
-  },
-  error => Promise.reject(error),
-);
-
-api.interceptors.response.use(
-  function (response: any) {
-    describeSuccessResponse(response);
-    try {
-      return response?.data;
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  },
-  //error
-  function (error) {
-    const {errors} = error?.response?.data;
-    if (error?.response?.status == 401 || error?.response?.data?.code === 401) {
-      showMessage({
-        message: errors ? errors?.toString() : 'Network Error',
-        type: 'danger',
-      });
-      // store.dispatch(logOut());
+  api.addResponseTransform(response => {
+    if (response.ok && response.data) {
+      response.ok = true;
     } else {
-      showMessage({
-        message: errors ? errors?.toString() : 'Network Error',
-        type: 'default',
-        backgroundColor: colors.error.light,
-        color: '#FFFFFF',
-      });
+      response.ok = false;
     }
+    api.setHeader('Authorization', `Bearer ${response?.data?.accessToken}`);
+  });
 
-    //Hàm log trả về error (Có thể bật và tắt trong file logger)
-    describeErrorResponse(error);
-    return Promise.reject(error);
-  },
-);
+  function login(body: {email: string; password: string}) {
+    return api.post<Login>('auth/login', body);
+  }
+  function register(body: RegisterPayload) {
+    return api.post('auth/register', body);
+  }
+  return {
+    login,
+    register,
+  };
+}
 
-export default api;
+const Api = create();
+
+export default Api;

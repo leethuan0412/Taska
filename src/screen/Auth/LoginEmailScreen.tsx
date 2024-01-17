@@ -1,16 +1,14 @@
 import {R} from '@src/assets/R';
-import {AppButton, AppHeader, Block} from '@src/component';
+import {AppButton, AppHeader, Block, DismissKeyboard} from '@src/component';
 import {AppImage} from '@src/component/AppImage/FstImage';
 import RNTextInput from '@src/component/AppInput';
 import {Spacing} from '@src/component/appSpacing';
-import DismissKeyboard from '@src/component/DismissKeyboard';
 import {FontSize} from '@src/component/fontSize';
 import {
   hideLoading,
   showLoading,
 } from '@src/component/Loading/LoadingProgressRef';
 import {NavigationUtils} from '@src/navigation/NavigationUtils';
-import {ROUTE_AUTH} from '@src/navigation/RouteAuth';
 import {setUserProfile} from '@src/redux/slices/accountSlice';
 import Api from '@src/service/Network/ApiService';
 import {colors} from '@src/theme';
@@ -105,9 +103,7 @@ const LoginEmailScreen = () => {
               )}
             </Formik>
             <TouchableOpacity
-              onPress={() =>
-                NavigationUtils.navigate(ROUTE_AUTH.FORGOTPASSWORD)
-              }>
+              onPress={() => NavigationUtils.navigate(Screen.FORGOT_PASSWORD)}>
               <Text style={styles.txtForgot}>Forgot the password?</Text>
             </TouchableOpacity>
 

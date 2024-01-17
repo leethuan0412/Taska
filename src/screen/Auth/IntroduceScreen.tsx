@@ -1,25 +1,20 @@
-import { AppButton, Block } from '@src/component';
-import { AppImage } from '@src/component/AppImage/FstImage';
-import { Spacing } from '@src/component/appSpacing';
-import { FontSize } from '@src/component/fontSize';
-import { NavigationUtils } from '@src/navigation/NavigationUtils';
-import { ROUTE_AUTH } from '@src/navigation/RouteAuth';
-import { colors } from '@src/theme';
-import { dataIntro } from '@src/utils/mock';
-import { useRef, useState } from 'react';
-import { Animated, Dimensions, FlatList, StyleSheet, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {AppButton, AppImage, Block, FontSize, Spacing} from '@src/component';
+import {NavigationUtils} from '@src/navigation/NavigationUtils';
+import {colors} from '@src/theme';
+import {dataIntro} from '@src/utils/mock';
+import {useRef, useState} from 'react';
+import {Animated, Dimensions, FlatList, StyleSheet, Text} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
-const {width} = Dimensions.get('screen')
+const {width} = Dimensions.get('screen');
 const IntroduceScreen = () => {
-
-  const scrollX = useRef(new Animated.Value(0)).current
-  const sliceRef : any= useRef(null)
+  const scrollX = useRef(new Animated.Value(0)).current;
+  const sliceRef: any = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const renderItemIntro=({item}: any)=>{
+  const renderItemIntro = ({item}: any) => {
     return (
-      <Block width={width-20}>
+      <Block width={width - 20}>
         <AppImage
           source={item.image}
           resizeMode="contain"
@@ -29,56 +24,60 @@ const IntroduceScreen = () => {
         <Text style={styles.description}>{item.description}</Text>
       </Block>
     );
-  }
+  };
 
-  const DotPanigation =({data, scrollX}:any)=>{
+  const DotPanigation = ({data, scrollX}: any) => {
     return (
-    <Block style={styles.viewDot}>
-      {data.map((_ : any, idx: number)=>{
-        const inputRange = [ (idx - 1) * width, idx * (width), (idx +1)* width ]
-        const dotWidth= scrollX.interpolate({
-          inputRange,
-           outputRange :[6,16,6],
-           extrapolate: 'clamp'
-        })
-        const backgroundColor = scrollX.interpolate({
-          inputRange,
-          outputRange: ['#ccc', '#246BFD', '#ccc'],
-          extrapolate: 'clamp',
-        });
-        return (
-          <Animated.View
-            key={idx.toString()}
-            style={[styles.dotStyle, {width: dotWidth, backgroundColor}]}
-          />
-        );
-      })}
-    </Block>
-    )
-  }
-  const handleOnScroll =(event: any)=>{
-
-    Animated.event([
+      <Block style={styles.viewDot}>
+        {data.map((_: any, idx: number) => {
+          const inputRange = [
+            (idx - 1) * width,
+            idx * width,
+            (idx + 1) * width,
+          ];
+          const dotWidth = scrollX.interpolate({
+            inputRange,
+            outputRange: [6, 16, 6],
+            extrapolate: 'clamp',
+          });
+          const backgroundColor = scrollX.interpolate({
+            inputRange,
+            outputRange: ['#ccc', '#246BFD', '#ccc'],
+            extrapolate: 'clamp',
+          });
+          return (
+            <Animated.View
+              key={idx.toString()}
+              style={[styles.dotStyle, {width: dotWidth, backgroundColor}]}
+            />
+          );
+        })}
+      </Block>
+    );
+  };
+  const handleOnScroll = (event: any) => {
+    Animated.event(
+      [
+        {
+          nativeEvent: {
+            contentOffset: {
+              x: scrollX,
+            },
+          },
+        },
+      ],
       {
-        nativeEvent:{
-          contentOffset:{
-            x:scrollX
-          }
-        }
-      }
-    ],
-    {
-      useNativeDriver: false
-    })(event)
-  }
-  
-  const ScrollToNext =()=>{
+        useNativeDriver: false,
+      },
+    )(event);
+  };
+
+  const ScrollToNext = () => {
     if (currentIndex < dataIntro.length - 1) {
       sliceRef.current.scrollToIndex({index: currentIndex + 1});
-    } else NavigationUtils.navigate(ROUTE_AUTH.LOGIN);
-    
-  }
-  const handleOnViewableItemsChanged = useRef(({viewableItems}:any) => {
+    } else NavigationUtils.navigate(Screen.LOGIN);
+  };
+  const handleOnViewableItemsChanged = useRef(({viewableItems}: any) => {
     setCurrentIndex(viewableItems[0].index);
   }).current;
 
@@ -112,7 +111,7 @@ const IntroduceScreen = () => {
         label="Skip"
         labelStyle={styles.txtSkip}
         style={styles.btnSkip}
-        onPress={() => NavigationUtils.navigate(ROUTE_AUTH.LOGIN)}
+        onPress={() => NavigationUtils.navigate(Screen.LOGIN)}
       />
     </SafeAreaView>
   );
@@ -177,5 +176,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export { IntroduceScreen };
-
+export {IntroduceScreen};

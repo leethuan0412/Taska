@@ -1,16 +1,18 @@
 import {R} from '@src/assets/R';
-import {AppButton, AppHeader, Block} from '@src/component';
-import {AppImage} from '@src/component/AppImage/FstImage';
+import {
+  AppButton,
+  AppHeader,
+  Block,
+  FontSize,
+  Spacing,
+  DismissKeyboard,
+} from '@src/component';
 import RNTextInput from '@src/component/AppInput';
-import {Spacing} from '@src/component/appSpacing';
-import DismissKeyboard from '@src/component/DismissKeyboard';
-import {FontSize} from '@src/component/fontSize';
 import {
   hideLoading,
   showLoading,
 } from '@src/component/Loading/LoadingProgressRef';
 import {NavigationUtils} from '@src/navigation/NavigationUtils';
-import {ROUTE_AUTH} from '@src/navigation/RouteAuth';
 import Api from '@src/service/Network/ApiService';
 import {colors} from '@src/theme';
 import {Formik} from 'formik';
@@ -122,9 +124,7 @@ const RegisterScreen = () => {
               marginTop={Spacing.height50}>
               <Text style={styles.txtAcc}>Already have an account?</Text>
               <TouchableOpacity
-                onPress={() =>
-                  NavigationUtils.navigate(ROUTE_AUTH.LOGIN_EMAIL)
-                }>
+                onPress={() => NavigationUtils.navigate(Screen.LOGIN_EMAIL)}>
                 <Text style={styles.txtSignup}>Sign in</Text>
               </TouchableOpacity>
             </Block>

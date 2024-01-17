@@ -3,11 +3,8 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import {R} from '@src/assets/R';
-import {AppButton, AppHeader, Block} from '@src/component';
-import {Spacing} from '@src/component/appSpacing';
-import {FontSize} from '@src/component/fontSize';
+import {AppButton, AppHeader, Block, FontSize, Spacing} from '@src/component';
 import {NavigationUtils} from '@src/navigation/NavigationUtils';
-import {ROUTE_AUTH} from '@src/navigation/RouteAuth';
 import {colors} from '@src/theme';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 //437633204254-tc4kg3hbbijn1kaaodh7gqb2fivkisis.apps.googleusercontent.com
@@ -65,7 +62,7 @@ const LoginScreen = () => {
         label="Sign in with password"
         style={styles.loginPassword}
         labelStyle={styles.txtlogin}
-        onPress={() => NavigationUtils.navigate(ROUTE_AUTH.LOGIN_EMAIL)}
+        onPress={() => NavigationUtils.navigate(Screen.LOGIN_EMAIL)}
       />
       <Block
         flex={1}
@@ -75,7 +72,7 @@ const LoginScreen = () => {
         marginTop={Spacing.height40}>
         <Text style={styles.txtAcc}>Don’t have an account?</Text>
         <TouchableOpacity
-          onPress={() => NavigationUtils.navigate(ROUTE_AUTH.REGISTER)}>
+          onPress={() => NavigationUtils.navigate(Screen.REGISTER)}>
           <Text style={styles.txtSignup}>Sign up</Text>
         </TouchableOpacity>
       </Block>

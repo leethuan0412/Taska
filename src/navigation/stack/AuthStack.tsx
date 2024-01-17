@@ -1,7 +1,11 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React, {memo} from 'react';
 import {SCREEN_ROUTE} from '../../constants/Constant';
-import SCREEN_ROUTE_AUTH from '../RouteAuth';
+import {IntroduceScreen} from '@src/screen/Auth/IntroduceScreen';
+import {LoginScreen} from '@src/screen/Auth/LoginScreen';
+import {LoginEmailScreen} from '@src/screen/Auth/LoginEmailScreen';
+import {ForgotpasswordScreen} from '@src/screen/Auth/ForgotpasswordScreen';
+import {RegisterScreen} from '@src/screen/Auth/RegisterScreen';
 
 const AuthStack = createStackNavigator();
 const AuthStackComponent = memo(() => {
@@ -11,13 +15,17 @@ const AuthStackComponent = memo(() => {
       screenOptions={{
         headerShown: false,
       }}>
-      {Object.keys(SCREEN_ROUTE_AUTH).map((elem, index) => (
-        <AuthStack.Screen
-          key={index}
-          name={elem}
-          component={SCREEN_ROUTE_AUTH[elem]}
-        />
-      ))}
+      <AuthStack.Screen name={Screen.INTRODUCE} component={IntroduceScreen} />
+      <AuthStack.Screen name={Screen.LOGIN} component={LoginScreen} />
+      <AuthStack.Screen
+        name={Screen.LOGIN_EMAIL}
+        component={LoginEmailScreen}
+      />
+      <AuthStack.Screen
+        name={Screen.FORGOT_PASSWORD}
+        component={ForgotpasswordScreen}
+      />
+      <AuthStack.Screen name={Screen.REGISTER} component={RegisterScreen} />
     </AuthStack.Navigator>
   );
 });

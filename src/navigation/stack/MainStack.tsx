@@ -2,7 +2,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {SCREEN_ROUTE} from '@src/constants';
 import React, {memo} from 'react';
 import {TabNavigator} from '../navigator/TabNavigator';
-import SCREEN_ROUTE_APP from '../RouteApp';
+import {HomeScreen} from '@src/screen/Main/HomeScreen';
 
 const MainStack = createStackNavigator();
 
@@ -14,13 +14,7 @@ const MainStackComponent = memo(() => {
         headerShown: false,
       }}>
       <MainStack.Screen name={SCREEN_ROUTE.MAIN} component={TabNavigator} />
-      {Object.keys(SCREEN_ROUTE_APP).map((elem, index) => (
-        <MainStack.Screen
-          key={index}
-          name={elem}
-          component={SCREEN_ROUTE_APP[elem]}
-        />
-      ))}
+      <MainStack.Screen name={Screen.HOME} component={HomeScreen} />
     </MainStack.Navigator>
   );
 });

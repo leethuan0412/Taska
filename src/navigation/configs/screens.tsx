@@ -6,3 +6,4 @@ enum Screen {
   INTRODUCE = 'INTRODUCE',
   LOGIN_EMAIL = 'LOGIN_EMAIL',
 }
+export default Screen;

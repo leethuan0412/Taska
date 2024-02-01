@@ -8,6 +8,7 @@ import {
   hideLoading,
   showLoading,
 } from '@src/component/Loading/LoadingProgressRef';
+import Screen from '@src/navigation/configs/screens';
 import {NavigationUtils} from '@src/navigation/NavigationUtils';
 import {setUserProfile} from '@src/redux/slices/accountSlice';
 import Api from '@src/service/Network/ApiService';
@@ -147,7 +148,7 @@ const LoginEmailScreen = () => {
               marginTop={Spacing.height50}>
               <Text style={styles.txtAcc}>Already have an account?</Text>
               <TouchableOpacity
-                onPress={() => NavigationUtils.navigate(ROUTE_AUTH.REGISTER)}>
+                onPress={() => NavigationUtils.navigate(Screen.REGISTER)}>
                 <Text style={styles.txtSignup}>Sign up</Text>
               </TouchableOpacity>
             </Block>

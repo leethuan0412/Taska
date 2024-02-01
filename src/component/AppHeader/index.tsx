@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Keyboard,
+  SafeAreaView,
   StyleProp,
   StyleSheet,
   Text,
@@ -98,14 +99,11 @@ export const AppHeader = (props: IAppHeader) => {
     );
   };
   return (
-    <TouchableOpacity
-      style={[styles.container, styleContainer]}
-      onPressIn={() => Keyboard.dismiss()}
-      activeOpacity={1}>
+    <SafeAreaView style={[styles.container, styleContainer]}>
       {renderLeft()}
       {title && <Text style={[styles.title, styleTitle]}>{title}</Text>}
       {renderRight()}
-    </TouchableOpacity>
+    </SafeAreaView>
   );
 };
 
@@ -122,14 +120,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: Spacing.width16,
     paddingVertical: Spacing.height20,
-    ...ifIphoneX(
-      {
-        paddingTop: Spacing.width50,
-      },
-      {
-        paddingTop: DEVICE.isIos ? Spacing.width35 : undefined,
-      },
-    ),
+    marginLeft: Spacing.width10,
+    // ...ifIphoneX(
+    //   {
+    //     paddingTop: Spacing.width50,
+    //   },
+    //   {
+    //     paddingTop: DEVICE.isIos ? Spacing.width35 : undefined,
+    //   },
+    // ),
   },
   title: {
     fontSize: FontSize.Font18,

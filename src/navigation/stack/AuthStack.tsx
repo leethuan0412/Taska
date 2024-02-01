@@ -6,6 +6,7 @@ import {LoginScreen} from '@src/screen/Auth/LoginScreen';
 import {LoginEmailScreen} from '@src/screen/Auth/LoginEmailScreen';
 import {ForgotpasswordScreen} from '@src/screen/Auth/ForgotpasswordScreen';
 import {RegisterScreen} from '@src/screen/Auth/RegisterScreen';
+import Screen from '../configs/screens';
 
 const AuthStack = createStackNavigator();
 const AuthStackComponent = memo(() => {

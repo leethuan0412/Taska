@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "748815530022-d6jhuguikmt807eeg3fin5ltfac3d57m.apps.googleusercontent.com",
+          "client_id": "748815530022-p1e06p4plh5r11jnkd2fap60t55ee3bn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.basern",
+            "certificate_hash": "076c8b065af8d0e816f79489c667e36727a2ec92"
+          }
+        },
+        {
+          "client_id": "748815530022-66ea4f0ku5o0ppdhn2ljhv8q07apnoc4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,8 +35,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "748815530022-d6jhuguikmt807eeg3fin5ltfac3d57m.apps.googleusercontent.com",
+              "client_id": "748815530022-66ea4f0ku5o0ppdhn2ljhv8q07apnoc4.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "748815530022-qlmvtdt8udsfqphfdh1iicm7g4jicnvu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.Taska"
+              }
             }
           ]
         }

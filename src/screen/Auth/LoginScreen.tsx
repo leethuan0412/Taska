@@ -5,27 +5,28 @@ import {
 import {R} from '@src/assets/R';
 import {AppButton, AppHeader, Block, FontSize, Spacing} from '@src/component';
 import {NavigationUtils} from '@src/navigation/NavigationUtils';
+import Screen from '@src/navigation/configs/screens';
 import {colors} from '@src/theme';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-//437633204254-tc4kg3hbbijn1kaaodh7gqb2fivkisis.apps.googleusercontent.com
+
 const LoginScreen = () => {
   const onLoginGoogle = async () => {
-    // GoogleSignin.configure({
-    //   scopes: ['email'],
-    //   webClientId:
-    //     '437633204254-tc4kg3hbbijn1kaaodh7gqb2fivkisis.apps.googleusercontent.com',
-    //   offlineAccess: true,
-    // });
-    // try {
-    //   await GoogleSignin.hasPlayServices();
-    //   const userInfo = await GoogleSignin.signIn();
-    //   console.log(userInfo);
-    //   // const {email, id} = userInfo.user;
-    //   // await login(email, id, 'G');
-    // } catch (error) {
-    //   console.log(error, 'err');
-    //   return false;
-    // }
+    GoogleSignin.configure({
+      scopes: ['email'],
+      webClientId:
+        '748815530022-66ea4f0ku5o0ppdhn2ljhv8q07apnoc4.apps.googleusercontent.com',
+      offlineAccess: true,
+    });
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log(userInfo);
+      // const {email, id} = userInfo.user;
+      // await login(email, id, 'G');
+    } catch (error) {
+      console.log(error, 'err');
+      return false;
+    }
   };
 
   return (

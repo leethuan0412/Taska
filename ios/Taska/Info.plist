@@ -25,6 +25,15 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
+	<!-- <key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.748815530022-qlmvtdt8udsfqphfdh1iicm7g4jicnvu</string>
+			</array>
+		</dict>
+	</array> -->
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>

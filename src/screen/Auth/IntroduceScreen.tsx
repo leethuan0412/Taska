@@ -1,5 +1,6 @@
 import {AppButton, AppImage, Block, FontSize, Spacing} from '@src/component';
 import {NavigationUtils} from '@src/navigation/NavigationUtils';
+import Screen from '@src/navigation/configs/screens';
 import {colors} from '@src/theme';
 import {dataIntro} from '@src/utils/mock';
 import {useRef, useState} from 'react';

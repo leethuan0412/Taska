@@ -13,6 +13,7 @@ import {
   showLoading,
 } from '@src/component/Loading/LoadingProgressRef';
 import {NavigationUtils} from '@src/navigation/NavigationUtils';
+import Screen from '@src/navigation/configs/screens';
 import Api from '@src/service/Network/ApiService';
 import {colors} from '@src/theme';
 import {Formik} from 'formik';
